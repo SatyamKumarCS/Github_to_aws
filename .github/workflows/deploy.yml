@@ -16,7 +16,7 @@ jobs:
       - name: Create html_files directory on EC2
         uses: appleboy/ssh-action@v0.1.10
         with:
-          host: ${{ secrets.EC2_H0ST }}
+          host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
@@ -25,7 +25,7 @@ jobs:
       - name: Copy files via SCP to EC2
         uses: appleboy/scp-action@v0.1.4
         with:
-          host: ${{ secrets.EC2_H0ST }}
+          host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           source: "image.html,sample_image.png"
@@ -34,7 +34,7 @@ jobs:
       - name: Copy files to Web Directory
         uses: appleboy/ssh-action@v0.1.10
         with:
-          host: ${{ secrets.EC2_H0ST }}
+          host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
